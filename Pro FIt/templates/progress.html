@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold"><a href="/">Fitness Pro</a></h1>
+        </div>
+        <nav class="mt-2 flex justify-center">
+            <div class="flex text-center"></div>
+            <a href="/" class="mr-4 px-2 py-1 rounded hover:bg-gray-500 hover:text-white">Home</a>
+            <a href="/progress" class="mr-4 px-2 py-1 rounded hover:bg-gray-500 hover:text-white">Progress</a>
+            <a href="/schedule" class="mr-4 px-2 py-1 rounded hover:bg-gray-500 hover:text-white">Schedule</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold mb-5">User Progress</h1>
+        <div id="progress-chart" class="mb-5">
+            <!-- Test progress bar -->
+            <div class="w-full bg-gray-300 rounded-full h-6">
+            <div class="bg-green-500 h-6 rounded-full" style="width: 80%;"></div>
+            </div>
+            <p class="text-sm mt-2">Progress: 80%</p>
+        </div>
+        <div id="progress-chart" class="mb-5">
+            <!-- Test progress bar -->
+            <div class="w-full bg-gray-300 rounded-full h-6">
+            <div class="bg-blue-500 h-6 rounded-full" style="width: 60%;"></div>
+            </div>
+            <p class="text-sm mt-2">Progress: 60%</p>
+        </div>
+        <div id="progress-chart" class="mb-5">
+            <!-- Test progress bar -->
+            <div class="w-full bg-gray-300 rounded-full h-6">
+            <div class="bg-yellow-500 h-6 rounded-full" style="width: 90%;"></div>
+            </div>
+            <p class="text-sm mt-2">Progress: 90%</p>
+        </div>
+        <div id="progress-chart" class="mb-5">
+            <!-- Test progress bar -->
+            <div class="w-full bg-gray-300 rounded-full h-6">
+            <div class="bg-red-500 h-6 rounded-full" style="width: 50%;"></div>
+            </div>
+            <p class="text-sm mt-2">Progress: 50%</p>
+        </div>
+        <div id="progress-chart" class="mb-5">
+            <!-- Test progress bar -->
+            <div class="w-full bg-gray-300 rounded-full h-6">
+            <div class="bg-purple-500 h-6 rounded-full" style="width: 75%;"></div>
+            </div>
+            <p class="text-sm mt-2">Progress: 75%</p>
+        </div>
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">User ID</th>
+                <th class="py-2 px-4 border-b">Date</th>
+                <th class="py-2 px-4 border-b">Workout Type</th>
+                <th class="py-2 px-4 border-b">Duration (min)</th>
+                <th class="py-2 px-4 border-b">Calories Burned</th>
+            </tr>
+            </thead>
+            <tbody id="progress-table">
+            <tr>
+                <td class="py-2 px-4 border-b">1</td>
+                <td class="py-2 px-4 border-b">2025-01-01</td>
+                <td class="py-2 px-4 border-b">Running</td>
+                <td class="py-2 px-4 border-b">30</td>
+                <td class="py-2 px-4 border-b">300</td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">2</td>
+                <td class="py-2 px-4 border-b">2025-01-02</td>
+                <td class="py-2 px-4 border-b">Cycling</td>
+                <td class="py-2 px-4 border-b">45</td>
+                <td class="py-2 px-4 border-b">400</td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">3</td>
+                <td class="py-2 px-4 border-b">2025-01-03</td>
+                <td class="py-2 px-4 border-b">Yoga</td>
+                <td class="py-2 px-4 border-b">60</td>
+                <td class="py-2 px-4 border-b">200</td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">4</td>
+                <td class="py-2 px-4 border-b">2025-01-04</td>
+                <td class="py-2 px-4 border-b">Swimming</td>
+                <td class="py-2 px-4 border-b">40</td>
+                <td class="py-2 px-4 border-b">350</td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">5</td>
+                <td class="py-2 px-4 border-b">2025-01-05</td>
+                <td class="py-2 px-4 border-b">Weightlifting</td>
+                <td class="py-2 px-4 border-b">50</td>
+                <td class="py-2 px-4 border-b">500</td>
+            </tr>
+            </tbody>
+            <tbody id="progress-table">
+            <!-- User progress data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-4" style="margin: 10px; padding: 10px;"></footer>
+        <p class="text-center text-gray-700">&copy; 2025 Fitness Pro. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', path='app.js') }}"></script>
+</body>
+</html>

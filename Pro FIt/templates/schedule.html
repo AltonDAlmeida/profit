@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Schedule</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold"><a href="/">Fitness Pro</a></h1>
+        </div>
+        <nav class="mt-2 flex justify-center">
+            <div class="flex text-center"></div>
+            <a href="/" class="mr-4 px-2 py-1 rounded hover:bg-gray-500 hover:text-white">Home</a>
+            <a href="/progress" class="mr-4 px-2 py-1 rounded hover:bg-gray-500 hover:text-white">Progress</a>
+            <a href="/schedule" class="mr-4 px-2 py-1 rounded hover:bg-gray-500 hover:text-white">Schedule</a>
+            </div>
+        </nav>
+    </header>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold mb-5">Workout Schedule</h1>
+        <div id="schedule-table" class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">Date</th>
+                        <th class="py-2 px-4 border-b">Workout Type</th>
+                        <th class="py-2 px-4 border-b">Duration</th>
+                        <th class="py-2 px-4 border-b">Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-body">
+                    <!-- Schedule entries will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5">
+            <button id="add-schedule" class="bg-blue-500 text-white px-4 py-2 rounded">Add Workout</button>
+            <script>
+            document.getElementById('add-schedule').addEventListener('click', function() {
+    const scheduleBody = document.getElementById('schedule-body');
+    const newRow = document.createElement('tr');
+
+    const dateCell = document.createElement('td');
+    dateCell.innerHTML = '<input type="date" class="border px-2 py-1 w-full" required>';
+    newRow.appendChild(dateCell);
+
+    const workoutTypeCell = document.createElement('td');
+    workoutTypeCell.innerHTML = '<input type="text" placeholder="Workout Type" class="border px-2 py-1 w-full" required>';
+    newRow.appendChild(workoutTypeCell);
+
+    const durationCell = document.createElement('td');
+    durationCell.innerHTML = '<input type="text" placeholder="Duration" class="border px-2 py-1 w-full" required>';
+    newRow.appendChild(durationCell);
+
+    const notesCell = document.createElement('td');
+    notesCell.innerHTML = '<input type="text" placeholder="Notes" class="border px-2 py-1 w-full">';
+    newRow.appendChild(notesCell);
+
+    const submitCell = document.createElement('td');
+    const submitButton = document.createElement('button');
+    submitButton.className = 'bg-green-500 text-white px-4 py-2 rounded';
+    submitButton.textContent = 'Submit';
+    submitButton.addEventListener('click', function() {
+        const data = {
+            day: dateCell.querySelector('input').value,
+            workout: workoutTypeCell.querySelector('input').value,
+            duration: durationCell.querySelector('input').value,
+            notes: notesCell.querySelector('input').value
+        };
+        console.log("date:", data.day);
+        console.log("Workout:", data.workout);
+        console.log("duration:", data.duration);
+        console.log("notes:", data.notes);
+
+        fetch('/add-schedule', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Workout added successfully!');
+            } else {
+                alert('Failed to add workout.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    });
+    submitCell.appendChild(submitButton);
+    newRow.appendChild(submitCell);
+
+    scheduleBody.appendChild(newRow);
+});
+
+            </script>
+        </div>
+        
+        </div>
+        
+        </div>
+    </div>
+    <footer class="bg-gray-200 py-4" style="margin: 10px; padding: 10px;"></footer>
+        <p class="text-center text-gray-700">&copy; 2025 Fitness Pro. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', path='app.js') }}"></script>
+</body>
+</html>
