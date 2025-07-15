@@ -1,0 +1,83 @@
+/* Custom styles for the Fitness Pro application */
+
+/* Tailwind CSS base styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #f9fafb;  */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #000000; /* Tailwind's gray-800 */
+}
+
+/* Header styles */         
+header {
+    background-color: #1f2937; /* Tailwind's gray-800 */
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #ffffff; /* White text */
+}
+
+/* Button styles */
+.btn {
+    background-color: #000000; /* Tailwind's blue-500 */
+    color: #ffffff; /* White text */
+    font-weight: bold;
+    padding: 0.5rem 1rem; /* Tailwind's py-2 px-4 */
+    border-radius: 0.25rem; /* Tailwind's rounded */
+}
+
+.btn:hover {
+    background-color: #1c1c1c; /* Tailwind's blue-700 */
+}
+
+/* Progress bar styles */
+.progress-bar {
+    height: 20px;
+    background-color: #e5e7eb; /* Tailwind's gray-300 */
+    border-radius: 5px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #000000; /* Tailwind's blue-500 */
+    border-radius: 5px;
+}
+
+.navbar:hover {
+    background-color: #000000; /* Black */
+}
+
+
+/* Table styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #e5e7eb; /* Tailwind's gray-300 */
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f3f4f6; /* Tailwind's gray-200 */
+}
+
+
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
